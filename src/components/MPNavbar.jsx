@@ -45,7 +45,12 @@ export default function MPNavbar() {
         <Tooltip content="Buyurtmalar">
           <button className="relative rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700">
             <HiOutlineBellAlert className="h-5 w-5" />
-            <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-red-600"></span>
+            <span className="absolute right-1 top-1">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-700"></span>
+              </span>
+            </span>
           </button>
         </Tooltip>
         <div className="flex select-none md:order-2">
