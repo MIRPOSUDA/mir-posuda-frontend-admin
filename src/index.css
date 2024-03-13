@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply h-full;
+  }
+
+  body {
+    @apply h-full dark:bg-dark;
+  }
+
+  #root {
+    @apply h-full;
+  }
+
+  main {
+    @apply grow p-10;
+  }
+}
