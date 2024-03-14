@@ -5,8 +5,7 @@ import { Flowbite } from "flowbite-react";
 import Admins from "./pages/Admins";
 import Categories from "./pages/Categories";
 import Statistics from "./pages/Statistics";
-import Sales from "./pages/Sales";
-import Earn from "./pages/Earn";
+import Settings from "./pages/Settings";
 
 function App() {
   const routes = createBrowserRouter([
@@ -27,8 +26,12 @@ function App() {
           element: <Categories />,
         },
         {
-          path: "/statistics/:route",
+          path: "/statistics",
           element: <Statistics />,
+        },
+        {
+          path: "/settings",
+          element: <Settings />,
         },
       ],
     },

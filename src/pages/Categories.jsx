@@ -1,3 +1,6 @@
+import { useTranslation } from "react-i18next";
+
 export default function Categories() {
-  return <div>Categories</div>;
+  const { t } = useTranslation();
+  return <div>{t("categories")}</div>;
 }

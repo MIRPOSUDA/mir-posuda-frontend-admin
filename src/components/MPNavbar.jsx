@@ -12,23 +12,28 @@ import { HiOutlineBellAlert, HiBars3BottomRight } from "react-icons/hi2";
 import LogoImg from "/assets/logo.jpg";
 import { useDispatch } from "react-redux";
 import { sidebarManager } from "../redux/slices/sidebar";
+import Notification from "./Notification";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function MPNavbar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { t } = useTranslation();
   function handleSideBar() {
     dispatch(sidebarManager());
   }
   return (
     <Navbar fluid>
       <div className="flex gap-5">
-        <Navbar.Brand href="https://flowbite-react.com">
+        <Navbar.Brand className="cursor-pointer" onClick={() => navigate("/")}>
           <img
             src={LogoImg}
             className="mr-3 h-6 rounded-full sm:h-9"
-            alt="Mirposuda logo"
+            alt={t("companyName")}
           />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Mirposuda
+            {t("companyName")}
           </span>
         </Navbar.Brand>
         <button
@@ -39,18 +44,14 @@ export default function MPNavbar() {
         </button>
       </div>
       <div className="ml-auto flex items-center gap-5">
-        <Tooltip content="Qorong'u rejimga o'tish">
+        <Tooltip content={t("changeTheme")}>
           <DarkThemeToggle />
         </Tooltip>
-        <Tooltip content="Buyurtmalar">
+
+        <Tooltip content={t("orders")}>
           <button className="relative rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700">
             <HiOutlineBellAlert className="h-5 w-5" />
-            <span className="absolute right-1 top-1">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-700"></span>
-              </span>
-            </span>
+            <Notification />
           </button>
         </Tooltip>
         <div className="flex select-none md:order-2">
@@ -58,9 +59,9 @@ export default function MPNavbar() {
             arrowIcon={false}
             inline
             label={
-              <Tooltip content="Sozlamalar">
+              <Tooltip content={t("settings")}>
                 <Avatar
-                  alt="User settings"
+                  alt={t("settings")}
                   img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                   rounded
                 />
@@ -70,14 +71,14 @@ export default function MPNavbar() {
             <DropdownHeader>
               <span className="block text-sm">Mirzo Ulug'bek</span>
               <span className="block truncate text-sm font-medium">
-                name@flowbite.com
+                +998887291129
               </span>
             </DropdownHeader>
-            <DropdownItem>Dashboard</DropdownItem>
-            <DropdownItem>Settings</DropdownItem>
-            <DropdownItem>Earnings</DropdownItem>
+            <DropdownItem onClick={() => navigate("/settings")}>
+              {t("settings")}
+            </DropdownItem>
             <DropdownDivider />
-            <DropdownItem>Sign out</DropdownItem>
+            <DropdownItem>{t("exit")}</DropdownItem>
           </Dropdown>
         </div>
       </div>

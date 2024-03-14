@@ -16,6 +16,6 @@
   }
 
   main {
-    @apply grow p-10;
+    @apply grow p-16;
   }
 }
