@@ -8,14 +8,10 @@
   }
 
   body {
-    @apply h-full dark:bg-dark;
+    @apply h-full dark:bg-gray-800;
   }
 
   #root {
     @apply h-full;
-  }
-
-  main {
-    @apply grow p-16;
   }
 }
