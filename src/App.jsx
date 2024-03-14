@@ -6,9 +6,10 @@ import Admins from "./pages/Admins";
 import Categories from "./pages/Categories";
 import Statistics from "./pages/Statistics";
 import Settings from "./pages/Settings";
-import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 function App() {
+  document.title = t("siteTitle");
   const routes = createBrowserRouter([
     {
       path: "/",
