@@ -1,7 +1,8 @@
 import { Button } from "flowbite-react";
 import { useTranslation } from "react-i18next";
 export default function MPLanguageToggler() {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
+  document.title = t("siteTitle");
   const languages = [
     { title: "O'zbekcha", code: "latin" },
     { title: "Ўзбекча", code: "cyrillic" },

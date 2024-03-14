@@ -6,6 +6,7 @@ import Admins from "./pages/Admins";
 import Categories from "./pages/Categories";
 import Statistics from "./pages/Statistics";
 import Settings from "./pages/Settings";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const routes = createBrowserRouter([
