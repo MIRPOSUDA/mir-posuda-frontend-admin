@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Badge,
   DarkThemeToggle,
   Dropdown,
   DropdownDivider,
@@ -25,8 +26,11 @@ export default function MPNavbar() {
   }
   return (
     <Navbar fluid>
-      <div className="flex gap-5">
-        <Navbar.Brand className="cursor-pointer" onClick={() => navigate("/")}>
+      <div className="flex gap-16">
+        <Navbar.Brand
+          className="relative cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           <img
             src={LogoImg}
             className="mr-3 h-6 rounded-full sm:h-9"
@@ -35,6 +39,9 @@ export default function MPNavbar() {
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             {t("companyName")}
           </span>
+          <Badge className="absolute -right-11 -top-1" color="gray">
+            {t("beta")}
+          </Badge>
         </Navbar.Brand>
         <button
           onClick={handleSideBar}
