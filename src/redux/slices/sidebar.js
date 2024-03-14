@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const sidebar = localStorage.getItem("sidebar");
+
 const initialState = {
-  open: true,
+  open: sidebar === "true" ? true : false,
 };
 
 export const sideBarSlice = createSlice({
@@ -10,11 +12,11 @@ export const sideBarSlice = createSlice({
   reducers: {
     sidebarManager(state) {
       state.open = !state.open;
+      localStorage.setItem("sidebar", state.open);
     },
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { sidebarManager } = sideBarSlice.actions;
 
 export default sideBarSlice.reducer;
