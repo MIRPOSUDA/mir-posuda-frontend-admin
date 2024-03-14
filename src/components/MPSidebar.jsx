@@ -4,11 +4,12 @@ import { HiUser } from "react-icons/hi";
 import { RiHome3Line } from "react-icons/ri";
 import { TbCategoryPlus } from "react-icons/tb";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 export default function MPSidebar() {
   const { open } = useSelector((state) => state.sideBarSlice);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { t } = useTranslation();
   const links = [
     { title: t("mainPage"), path: "/", icon: RiHome3Line },
@@ -43,6 +44,7 @@ export default function MPSidebar() {
                 onClick={() => navigate(path)}
                 key={title}
                 icon={icon}
+                active={path === pathname ? true : false}
               >
                 {title}
               </Sidebar.Item>
