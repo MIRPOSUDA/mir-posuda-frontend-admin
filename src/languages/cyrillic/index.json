@@ -1,5 +1,8 @@
 {
   "siteTitle": "МИР-ПОСУДА супер админ",
+  "enterPhoneNumber": "Телефон рақамингизни киритинг*",
+  "enterPassword": "Паролингизни киритинг*",
+  "password": "Пароль",
   "companyName": "МИР-ПОСУДА",
   "beta": "Бета",
   "chooseLanguage": "Тилни танланг",
@@ -9,5 +12,7 @@
   "changeTheme": "Мавзуни ўзгартириш",
   "orders": "Фаол буюртмалар",
   "settings": "Созламалар",
-  "exit": "Чиқиш"
+  "exit": "Чиқиш",
+  "login": "Кириш",
+  "toastifyLoginSucces": "Тизимга муваффақиятли кирдингиз"
 }

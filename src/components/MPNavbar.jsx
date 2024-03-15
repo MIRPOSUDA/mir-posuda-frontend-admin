@@ -16,14 +16,25 @@ import { sidebarManager } from "../redux/slices/sidebar";
 import Notification from "./Notification";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { setUser } from "../redux/slices/user";
+import { toast } from "react-toastify";
 
 export default function MPNavbar() {
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
+
   const { t } = useTranslation();
+
   function handleSideBar() {
     dispatch(sidebarManager());
   }
+
+  function logout() {
+    dispatch(setUser(null));
+    toast.success(t("toastifyLoginSucces"));
+  }
+
   return (
     <Navbar fluid>
       <div className="flex gap-16">
@@ -85,7 +96,7 @@ export default function MPNavbar() {
               {t("settings")}
             </DropdownItem>
             <DropdownDivider />
-            <DropdownItem>{t("exit")}</DropdownItem>
+            <DropdownItem onClick={logout}>{t("exit")}</DropdownItem>
           </Dropdown>
         </div>
       </div>

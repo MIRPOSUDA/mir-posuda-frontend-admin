@@ -1,5 +1,8 @@
 {
   "siteTitle": "MIR-POSUDA super admin",
+  "enterPhoneNumber": "Telefon raqamingizni kiriting*",
+  "enterPassword": "Parolingizni kiriting*",
+  "password": "Parol",
   "companyName": "MIR-POSUDA",
   "beta": "Beta",
   "chooseLanguage": "Tilni tanlang",
@@ -9,5 +12,7 @@
   "changeTheme": "Mavzuni o'zgartirish",
   "orders": "Faol buyurtmalar",
   "settings": "Sozlamalar",
-  "exit": "Chiqish"
+  "exit": "Chiqish",
+  "login": "Kirish",
+  "toastifyLoginSucces": "Tizimga muvaffaqiyatli kirdingiz"
 }

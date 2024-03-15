@@ -1,5 +1,8 @@
 {
   "siteTitle": "МИР-ПОСУДА суперадмин",
+  "enterPhoneNumber": "Введите свой номер телефона*",
+  "enterPassword": "Введите ваш пароль*",
+  "password": "Пароль",
   "companyName": "МИР-ПОСУДА",
   "beta": "Бета",
   "chooseLanguage": "Выберите язык",
@@ -9,5 +12,7 @@
   "changeTheme": "Изменить тему",
   "orders": "Активные заказы",
   "settings": "Настройки",
-  "exit": "Выход"
+  "exit": "Выход",
+  "login": "Вход",
+  "toastifyLoginSucces": "Вы успешно вошли в"
 }
