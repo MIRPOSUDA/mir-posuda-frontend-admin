@@ -33,7 +33,7 @@ export default function MPSidebar() {
       className="transition-all duration-300"
       theme={customTheme}
       collapseBehavior="collapse"
-      collapsed={!open}
+      collapsed={open}
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
