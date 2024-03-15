@@ -14,5 +14,6 @@
   "settings": "Sozlamalar",
   "exit": "Chiqish",
   "login": "Kirish",
-  "toastifyLoginSucces": "Tizimga muvaffaqiyatli kirdingiz"
+  "toastifyLoginSucces": "Tizimga muvaffaqiyatli kirdingiz",
+  "toastifyLoginError": "Telefon raqam yoki parol noto'g'ri kiritilgan"
 }

@@ -54,6 +54,7 @@ function App() {
       element: user ? <Navigate to="/" /> : <Login />,
     },
   ]);
+
   return (
     <Flowbite>
       <RouterProvider router={routes} />;

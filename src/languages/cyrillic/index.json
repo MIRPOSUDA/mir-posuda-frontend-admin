@@ -14,5 +14,6 @@
   "settings": "Созламалар",
   "exit": "Чиқиш",
   "login": "Кириш",
-  "toastifyLoginSucces": "Тизимга муваффақиятли кирдингиз"
+  "toastifyLoginSucces": "Тизимга муваффақиятли кирдингиз",
+  "toastifyLoginError": "Телефон рақам ёки пароль нотўғри киритилган"
 }

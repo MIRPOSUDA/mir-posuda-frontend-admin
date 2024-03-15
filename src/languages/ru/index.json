@@ -14,5 +14,6 @@
   "settings": "Настройки",
   "exit": "Выход",
   "login": "Вход",
-  "toastifyLoginSucces": "Вы успешно вошли в"
+  "toastifyLoginSucces": "Вы успешно вошли в",
+  "toastifyLoginError": "Номер телефона или пароль был введен неверно"
 }

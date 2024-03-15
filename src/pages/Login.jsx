@@ -1,29 +1,36 @@
-import { Button, Label, TextInput } from "flowbite-react";
-import { useDispatch } from "react-redux";
-import { setUser } from "../redux/slices/user";
+import { Button, Label, Spinner } from "flowbite-react";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading, setUser } from "../redux/slices/user";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
 import LogoImg from "/assets/logo.jpg";
+import getFormData from "../utils/get-form-data";
+import MPNumberInput from "../components/MPNumberInput";
+import MPPasswordInput from "../components/MPPasswordInput";
+import useLogin from "../hooks/useLogin";
 
 export default function Login() {
-  const [number, setNumber] = useState("");
+  const { loginWithPhoneNumberAndPassword } = useLogin();
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const { isLoading } = useSelector((state) => state.userSlice);
 
-  function login() {
-    dispatch(setUser({}));
-    toast.success(t("toastifyLoginSucces"));
+  function handleSubmit(e) {
+    e.preventDefault();
+    const data = getFormData(e.target);
+    dispatch(setLoading(true));
+    loginWithPhoneNumberAndPassword(data)
+      .then((res) => {
+        dispatch(setUser(res));
+        dispatch(setLoading(false));
+        toast.success(t("toastifyLoginSucces"));
+      })
+      .catch(() => {
+        dispatch(setUser(null));
+        dispatch(setLoading(false));
+        toast.error(t("toastifyLoginError"));
+      });
   }
-
-  const maskPhone = (value) => {
-    return value
-      .replace(/\D/g, "")
-      .replace(/(\d{2})(\d)/, "($1) $2")
-      .replace(/(\d{3})(\d)/, "$1-$2")
-      .replace(/(-\d{2})(\d)/, "$1-$2")
-      .replace(/(-\d{2})(\d+?)$/, "$1");
-  };
 
   return (
     <div className="mx-auto flex max-w-md pt-40">
@@ -40,36 +47,24 @@ export default function Login() {
             </span>
           </span>
         </header>
-        <form className="flex w-full flex-col gap-4 p-10">
+        <form
+          className="flex w-full flex-col gap-4 p-10"
+          onSubmit={handleSubmit}
+        >
           <div>
             <div className="mb-2 block">
               <Label htmlFor="phoneNumber" value={t("enterPhoneNumber")} />
             </div>
-            <TextInput
-              id="phoneNumber"
-              type="text"
-              value={number}
-              placeholder="(00) 123-45-67"
-              autoComplete="off"
-              onChange={(e) => setNumber(maskPhone(e.target.value))}
-              addon="+998"
-              required
-            />
+            <MPNumberInput />
           </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="password" value={t("enterPassword")} />
             </div>
-            <TextInput
-              id="password"
-              type="password"
-              placeholder={t("password")}
-              autoComplete="off"
-              required
-            />
+            <MPPasswordInput />
           </div>
-          <Button onClick={login} type="submit">
-            {t("login")}
+          <Button type="submit">
+            {isLoading ? <Spinner size="sm" /> : t("login")}
           </Button>
         </form>
       </div>
