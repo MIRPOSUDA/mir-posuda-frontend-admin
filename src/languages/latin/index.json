@@ -15,5 +15,18 @@
   "exit": "Chiqish",
   "login": "Kirish",
   "toastifyLoginSucces": "Tizimga muvaffaqiyatli kirdingiz",
-  "toastifyLoginError": "Telefon raqam yoki parol noto'g'ri kiritilgan"
+  "toastifyLoginError": "Telefon raqam yoki parol noto'g'ri kiritilgan",
+  "loading": "Yuklanmoqda...",
+  "status": "Faollik",
+  "edit": "Tahrirlash",
+  "delete": "O'chirish",
+  "archieve": "Arxivlash",
+  "unarchieve": "Arxivdan chiqarish",
+  "active": "Faol",
+  "noActive": "Faol emas",
+  "noCategories": "Turkumlar mavjud emas",
+  "addCategory": "Turkum qo'shish",
+  "enterCategoryName": "Kategoriya nomini 3 tilda kiriting",
+  "accept": "Tasdiqlash",
+  "decline": "Bekor qilish"
 }

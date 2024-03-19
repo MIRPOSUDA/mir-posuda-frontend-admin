@@ -15,5 +15,18 @@
   "exit": "Выход",
   "login": "Вход",
   "toastifyLoginSucces": "Вы успешно вошли в",
-  "toastifyLoginError": "Номер телефона или пароль был введен неверно"
+  "toastifyLoginError": "Номер телефона или пароль был введен неверно",
+  "loading": "Загрузка...",
+  "status": "Активность",
+  "edit": "Редактировать",
+  "delete": "Удалить",
+  "archieve": "Архив",
+  "unarchieve": "Разархивировать",
+  "active": "Активный",
+  "noActive": "Не активен",
+  "noCategories": "Нет категорий",
+  "addCategory": "Добавить категорию",
+  "enterCategoryName": "Введите название категории на 3 языках",
+  "accept": "Подтверждение",
+  "decline": "Отмена"
 }

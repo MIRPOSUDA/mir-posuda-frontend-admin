@@ -15,5 +15,18 @@
   "exit": "Чиқиш",
   "login": "Кириш",
   "toastifyLoginSucces": "Тизимга муваффақиятли кирдингиз",
-  "toastifyLoginError": "Телефон рақам ёки пароль нотўғри киритилган"
+  "toastifyLoginError": "Телефон рақам ёки пароль нотўғри киритилган",
+  "loading": "Юкланмоқда...",
+  "status": "Фаоллик",
+  "edit": "Таҳрирлаш",
+  "delete": "Ўчириш",
+  "archieve": "Архивлаш",
+  "unarchieve": "Архивдан чиқариш",
+  "active": "Фаол",
+  "noActive": "Фаол эмас",
+  "noCategories": "Туркумлар мавжуд эмас",
+  "addCategory": "Туркум қўшиш",
+  "enterCategoryName": "Категория номини 3 тилда киритинг",
+  "accept": "Тасдиқлаш",
+  "decline": "Бекор қилиш"
 }
