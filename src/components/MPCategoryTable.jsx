@@ -12,9 +12,29 @@ import {
 import { MdOutlineEdit, MdDelete } from "react-icons/md";
 import { IoMdArchive } from "react-icons/io";
 import { useTranslation } from "react-i18next";
+import useCategory from "../hooks/useCategory";
+import { useDispatch } from "react-redux";
+import { modalManager } from "../redux/slices/modals";
+import MPCategoryModal from "./MPCategoryModal";
+import MPCategoryConfirmationModal from "./MPCategoryConfirmationModal";
 
 export default function MPCategoryTable({ categories }) {
   const { t } = useTranslation();
+  const { deleteCategory } = useCategory();
+  const dispatch = useDispatch();
+
+  function handleDelete(id) {
+    dispatch(modalManager("deleteCategoryConfirmationModal"));
+    // deleteCategory(id)
+    //   .then((res) => {
+    //     toast.success("Kategoriya o'chirildi");
+    //   })
+    //   .catch((error) => {
+    //     toast.error(error.message);
+    //     console.error(error);
+    //   });
+  }
+
   return (
     <div>
       <Table hoverable>
@@ -53,7 +73,11 @@ export default function MPCategoryTable({ categories }) {
                       </Button>
                     </Tooltip>
                     <Tooltip content={t("delete")}>
-                      <Button size="xs" color="failure">
+                      <Button
+                        size="xs"
+                        color="failure"
+                        onClick={() => handleDelete(id)}
+                      >
                         <MdDelete />
                       </Button>
                     </Tooltip>

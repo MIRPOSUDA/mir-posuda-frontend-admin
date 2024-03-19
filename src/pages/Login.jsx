@@ -1,7 +1,6 @@
 import { Button, Label, Spinner } from "flowbite-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "../redux/slices/user";
-import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import LogoImg from "/assets/logo.jpg";
 import getFormData from "../utils/get-form-data";
@@ -9,6 +8,7 @@ import MPNumberInput from "../components/MPNumberInput";
 import MPPasswordInput from "../components/MPPasswordInput";
 import useLogin from "../hooks/useLogin";
 import getFormattedNumber from "../utils/get-formatted-number";
+import { toast } from "sonner";
 
 export default function Login() {
   const { loginWithPhoneNumberAndPassword } = useLogin();
@@ -65,7 +65,7 @@ export default function Login() {
             </div>
             <MPPasswordInput />
           </div>
-          <Button type="submit">
+          <Button type="submit" disabled={isLoading}>
             {isLoading ? <Spinner size="sm" /> : t("login")}
           </Button>
         </form>

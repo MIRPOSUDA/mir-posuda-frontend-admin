@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useRef } from "react";
 import getFormData from "../utils/get-form-data";
 import useCategory from "../hooks/useCategory";
+import { toast } from "sonner";
 
 export default function MPCategoryModal() {
   const { addCategoryModal } = useSelector((state) => state.modalsSlice);
@@ -18,12 +19,24 @@ export default function MPCategoryModal() {
   function handleSubmit(e) {
     e.preventDefault();
     const data = getFormData(e.target);
-    console.log(data);
-    addCategory(data);
+    addCategory(data)
+      .then((res) => {
+        toast.success("Qo'shildi");
+        dispatch(modalManager("addCategoryModal"));
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
   }
   return (
     <>
-      <Modal show={addCategoryModal} onClose={handleModal} tabIndex={0}>
+      <Modal
+        dismissible
+        show={addCategoryModal}
+        onClose={handleModal}
+        tabIndex={0}
+      >
         <Modal.Header>{t("enterCategoryName")}</Modal.Header>
         <Modal.Body>
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
@@ -32,7 +45,6 @@ export default function MPCategoryModal() {
                 minLength="3"
                 addon={<span className="w-[95px] text-center">O'zbekcha</span>}
                 name="nameUz"
-                value="Choynaklar"
                 required
               />
             </div>
@@ -40,14 +52,12 @@ export default function MPCategoryModal() {
               minLength="3"
               addon={<span className="w-[95px] text-center">Ўзбекча</span>}
               name="nameRu"
-              value="Чойнаклар"
               required
             />
             <TextInput
               minLength="3"
               addon={<span className="w-[95px] text-center">Русский</span>}
               name="nameCr"
-              value="Чайники"
               required
             />
             <button className="sr-only" type="submit" ref={submitter}>
