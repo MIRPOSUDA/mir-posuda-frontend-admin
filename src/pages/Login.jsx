@@ -8,6 +8,7 @@ import getFormData from "../utils/get-form-data";
 import MPNumberInput from "../components/MPNumberInput";
 import MPPasswordInput from "../components/MPPasswordInput";
 import useLogin from "../hooks/useLogin";
+import getFormattedNumber from "../utils/get-formatted-number";
 
 export default function Login() {
   const { loginWithPhoneNumberAndPassword } = useLogin();
@@ -18,6 +19,7 @@ export default function Login() {
   function handleSubmit(e) {
     e.preventDefault();
     const data = getFormData(e.target);
+    data.phoneNumber = getFormattedNumber(data.phoneNumber);
     dispatch(setLoading(true));
     loginWithPhoneNumberAndPassword(data)
       .then((res) => {
