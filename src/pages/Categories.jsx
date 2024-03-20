@@ -20,12 +20,10 @@ export default function Categories() {
       .then((res) => {
         setCategories(res);
       })
-      .catch((error) => {
-        toast.error("Login qiling");
-        console.log(error.message);
+      .catch(({ message }) => {
+        toast.info(message);
         dispatch(setUser(null));
       });
-    console.log(5);
   }, []);
 
   function handleModal() {

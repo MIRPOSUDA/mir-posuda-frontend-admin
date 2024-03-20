@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { useSelector } from "react-redux";
 
 export default function useCategory() {
@@ -5,14 +6,7 @@ export default function useCategory() {
   const baseUrl = "https://admin.mirzobox.uz/api";
 
   async function getCategory() {
-    let language = localStorage.getItem("language");
-    if (language === "latin") {
-      language = "uz";
-    } else if (language === "cyrillic") {
-      language = "cr";
-    } else if (language === "ru") {
-      language = "ru";
-    } else language = "cr";
+    const language = localStorage.getItem("language") || "cr";
     const req = await fetch(baseUrl + `/category/get-all/${language}`, {
       headers: {
         Authorization: `Bearer ${user?.token}`,
@@ -26,14 +20,14 @@ export default function useCategory() {
       case 204:
         return [];
       case 401:
-        throw new Error(null);
+        throw new Error(t("mustLogin"));
       default:
         return req;
     }
   }
 
   async function addCategory(category) {
-    const req = await fetch(baseUrl + "/category/create", {
+    fetch(baseUrl + "/category/create", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${user?.token}`,
@@ -41,87 +35,32 @@ export default function useCategory() {
       },
       body: JSON.stringify(category),
     });
-
-    switch (req.status) {
-      case 200:
-        return req;
-      case 401:
-        throw new Error(null);
-      case 400:
-        throw new Error("Salom");
-      default:
-        return req;
-    }
   }
 
-  async function deleteCategory(id) {
-    const req = await fetch(baseUrl + `/category/delete/${id}`, {
+  function deleteCategory(id) {
+    fetch(baseUrl + `/category/delete/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user?.token}`,
         "Content-Type": "application/json",
       },
     });
-
-    switch (req.status) {
-      case 200:
-        return req;
-      case 401:
-        throw new Error(null);
-      case 400:
-        throw new Error("Salom");
-      default:
-        return req;
-    }
   }
 
-  async function archiveCategory(id) {
-    const req = await fetch(baseUrl + `/category/archive/${id}`, {
+  function handleArchiveCategory(id, mode) {
+    fetch(baseUrl + `/category/${mode}/${id}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${user?.token}`,
         "Content-Type": "application/json",
       },
     });
-
-    switch (req.status) {
-      case 200:
-        return req;
-      case 401:
-        throw new Error(null);
-      case 400:
-        throw new Error("Salom");
-      default:
-        return req;
-    }
-  }
-
-  async function unArchiveCategory(id) {
-    const req = await fetch(baseUrl + `/category/unarchive/${id}`, {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${user?.token}`,
-        "Content-Type": "application/json",
-      },
-    });
-
-    switch (req.status) {
-      case 200:
-        return req;
-      case 401:
-        throw new Error(null);
-      case 400:
-        throw new Error("Salom");
-      default:
-        return req;
-    }
   }
 
   return {
     getCategory,
     addCategory,
     deleteCategory,
-    archiveCategory,
-    unArchiveCategory,
+    handleArchiveCategory,
   };
 }

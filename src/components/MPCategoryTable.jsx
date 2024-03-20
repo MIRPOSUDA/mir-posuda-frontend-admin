@@ -21,7 +21,7 @@ import { toast } from "sonner";
 export default function MPCategoryTable({ categories }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { archiveCategory, unArchiveCategory } = useCategory();
+  const { handleArchiveCategory } = useCategory();
 
   function handleDelete(id) {
     dispatch(setID(id));
@@ -29,15 +29,8 @@ export default function MPCategoryTable({ categories }) {
   }
 
   function handleArchive(id, mode) {
-    if (mode === "archive") {
-      archiveCategory(id).then((res) => {
-        toast.success("Arxivlandi");
-      });
-    } else {
-      unArchiveCategory(id).then((res) => {
-        toast.success("Arxivdan chiqarildi");
-      });
-    }
+    toast.success("Arxivlandi");
+    handleArchiveCategory(id, mode);
   }
 
   return (

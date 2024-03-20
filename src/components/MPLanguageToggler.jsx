@@ -4,8 +4,8 @@ export default function MPLanguageToggler() {
   const { i18n, t } = useTranslation();
   document.title = t("siteTitle");
   const languages = [
-    { title: "O'zbekcha", code: "latin" },
-    { title: "Ўзбекча", code: "cyrillic" },
+    { title: "O'zbekcha", code: "uz" },
+    { title: "Ўзбекча", code: "cr" },
     { title: "Русский", code: "ru" },
   ];
 

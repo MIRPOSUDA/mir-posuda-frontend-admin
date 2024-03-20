@@ -2,13 +2,12 @@ import { Button, Modal, Spinner, TextInput } from "flowbite-react";
 import { useDispatch, useSelector } from "react-redux";
 import { modalManager } from "../redux/slices/modals";
 import { useTranslation } from "react-i18next";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import getFormData from "../utils/get-form-data";
 import useCategory from "../hooks/useCategory";
 import { toast } from "sonner";
 
 export default function MPCategoryModal() {
-  const [loading, setLoading] = useState(false);
   const { addCategoryModal } = useSelector((state) => state.modalsSlice);
   const { addCategory } = useCategory();
   const dispatch = useDispatch();
@@ -20,18 +19,7 @@ export default function MPCategoryModal() {
   function handleSubmit(e) {
     e.preventDefault();
     const data = getFormData(e.target);
-    setLoading(true);
-    addCategory(data)
-      .then((res) => {
-        setLoading(false);
-        toast.success(t("toastifyNewCategoryAddedSucces"));
-        dispatch(modalManager("addCategoryModal"));
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-        toast.error(error.message);
-      });
+    addCategory(data);
   }
   return (
     <>
@@ -78,9 +66,8 @@ export default function MPCategoryModal() {
             onClick={() => {
               submitter.current.click();
             }}
-            disabled={loading}
           >
-            {loading ? <Spinner size="sm" /> : t("accept")}
+            {t("accept")}
           </Button>
         </Modal.Footer>
       </Modal>
