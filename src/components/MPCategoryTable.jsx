@@ -9,37 +9,42 @@ import {
   TableRow,
   Tooltip,
 } from "flowbite-react";
-import { MdOutlineEdit, MdDelete } from "react-icons/md";
+import { MdOutlineEdit, MdDelete, MdUnarchive } from "react-icons/md";
 import { IoMdArchive } from "react-icons/io";
 import { useTranslation } from "react-i18next";
-import useCategory from "../hooks/useCategory";
 import { useDispatch } from "react-redux";
 import { modalManager } from "../redux/slices/modals";
-import MPCategoryModal from "./MPCategoryModal";
-import MPCategoryConfirmationModal from "./MPCategoryConfirmationModal";
+import { setID } from "../redux/slices/delete-element-id";
+import useCategory from "../hooks/useCategory";
+import { toast } from "sonner";
 
 export default function MPCategoryTable({ categories }) {
   const { t } = useTranslation();
-  const { deleteCategory } = useCategory();
   const dispatch = useDispatch();
+  const { archiveCategory, unArchiveCategory } = useCategory();
 
   function handleDelete(id) {
+    dispatch(setID(id));
     dispatch(modalManager("deleteCategoryConfirmationModal"));
-    // deleteCategory(id)
-    //   .then((res) => {
-    //     toast.success("Kategoriya o'chirildi");
-    //   })
-    //   .catch((error) => {
-    //     toast.error(error.message);
-    //     console.error(error);
-    //   });
+  }
+
+  function handleArchive(id, mode) {
+    if (mode === "archive") {
+      archiveCategory(id).then((res) => {
+        toast.success("Arxivlandi");
+      });
+    } else {
+      unArchiveCategory(id).then((res) => {
+        toast.success("Arxivdan chiqarildi");
+      });
+    }
   }
 
   return (
     <div>
       <Table hoverable>
         <TableHead>
-          <TableHeadCell>ID</TableHeadCell>
+          <TableHeadCell>{t("id")}</TableHeadCell>
           <TableHeadCell>{t("categories")}</TableHeadCell>
           <TableHeadCell>{t("status")}</TableHeadCell>
           <Table.HeadCell>
@@ -67,16 +72,22 @@ export default function MPCategoryTable({ categories }) {
                         <MdOutlineEdit />
                       </Button>
                     </Tooltip>
-                    <Tooltip content={t("archieve")}>
-                      <Button size="xs" color="warning">
-                        <IoMdArchive />
+                    <Tooltip content={t(isActive ? "archive" : "unarchive")}>
+                      <Button
+                        onClick={() =>
+                          handleArchive(id, isActive ? "archive" : "unarchive")
+                        }
+                        size="xs"
+                        color={isActive ? "warning" : "success"}
+                      >
+                        {isActive ? <IoMdArchive /> : <MdUnarchive />}
                       </Button>
                     </Tooltip>
                     <Tooltip content={t("delete")}>
                       <Button
+                        onClick={() => handleDelete(id)}
                         size="xs"
                         color="failure"
-                        onClick={() => handleDelete(id)}
                       >
                         <MdDelete />
                       </Button>

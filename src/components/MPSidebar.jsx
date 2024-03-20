@@ -23,6 +23,10 @@ export default function MPSidebar() {
 
   const customTheme = {
     root: {
+      collapsed: {
+        on: "w-16",
+        off: "w-80",
+      },
       inner:
         "h-full overflow-y-auto overflow-x-hidden bg-white py-4 px-3 dark:bg-gray-800",
     },
@@ -30,7 +34,7 @@ export default function MPSidebar() {
 
   return (
     <Sidebar
-      className="transition-all duration-300"
+      className="transition-all  duration-500"
       theme={customTheme}
       collapseBehavior="collapse"
       collapsed={open}

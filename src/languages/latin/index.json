@@ -20,13 +20,16 @@
   "status": "Faollik",
   "edit": "Tahrirlash",
   "delete": "O'chirish",
-  "archieve": "Arxivlash",
-  "unarchieve": "Arxivdan chiqarish",
+  "archive": "Arxivlash",
+  "unarchive": "Arxivdan chiqarish",
   "active": "Faol",
   "noActive": "Faol emas",
   "noCategories": "Turkumlar mavjud emas",
   "addCategory": "Turkum qo'shish",
   "enterCategoryName": "Kategoriya nomini 3 tilda kiriting",
   "accept": "Tasdiqlash",
-  "decline": "Bekor qilish"
+  "decline": "Bekor qilish",
+  "id": "ID",
+  "deleteCategoryConfirmation": "Haqiqatan ham ushbu turkumni o'chirib tashlamoqchimisiz?",
+  "toastifyNewCategoryAddedSucces": "Yangi turkum qo'shildi"
 }

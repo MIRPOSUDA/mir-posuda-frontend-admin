@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import MPSidebar from "../components/MPSidebar";
 import Header from "../components/Header";
 import MPCategoryModal from "../components/MPCategoryModal";
+import MPCategoryConfirmationModal from "../components/MPCategoryConfirmationModal";
 
 export default function RootLayouts() {
   return (
@@ -14,6 +15,7 @@ export default function RootLayouts() {
         </main>
       </div>
       <MPCategoryModal />
+      <MPCategoryConfirmationModal />
     </>
   );
 }

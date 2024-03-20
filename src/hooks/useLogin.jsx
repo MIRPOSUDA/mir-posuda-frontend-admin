@@ -1,5 +1,5 @@
 export default function useLogin() {
-  const baseUrl = "https://mir-posuda.1kb.uz/api/auth/login";
+  const baseUrl = "https://admin.mirzobox.uz/api/auth/login";
   async function loginWithPhoneNumberAndPassword(data) {
     const req = await fetch(baseUrl, {
       method: "POST",

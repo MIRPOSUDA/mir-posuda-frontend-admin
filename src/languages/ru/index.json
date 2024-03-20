@@ -20,13 +20,16 @@
   "status": "Активность",
   "edit": "Редактировать",
   "delete": "Удалить",
-  "archieve": "Архив",
-  "unarchieve": "Разархивировать",
+  "archive": "Архив",
+  "unarchive": "Разархивировать",
   "active": "Активный",
   "noActive": "Не активен",
   "noCategories": "Нет категорий",
   "addCategory": "Добавить категорию",
   "enterCategoryName": "Введите название категории на 3 языках",
   "accept": "Подтверждение",
-  "decline": "Отмена"
+  "decline": "Отмена",
+  "id": "ИД",
+  "deleteCategoryConfirmation": "Вы уверены, что хотите удалить эту категорию?",
+  "toastifyNewCategoryAddedSucces": "Добавлена ​​новая категория"
 }

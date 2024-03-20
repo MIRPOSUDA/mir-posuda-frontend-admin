@@ -20,13 +20,16 @@
   "status": "Фаоллик",
   "edit": "Таҳрирлаш",
   "delete": "Ўчириш",
-  "archieve": "Архивлаш",
-  "unarchieve": "Архивдан чиқариш",
+  "archive": "Архивлаш",
+  "unarchive": "Архивдан чиқариш",
   "active": "Фаол",
   "noActive": "Фаол эмас",
   "noCategories": "Туркумлар мавжуд эмас",
   "addCategory": "Туркум қўшиш",
   "enterCategoryName": "Категория номини 3 тилда киритинг",
   "accept": "Тасдиқлаш",
-  "decline": "Бекор қилиш"
+  "decline": "Бекор қилиш",
+  "id": "ИД",
+  "deleteCategoryConfirmation": "Ҳақиқатан ҳам ушбу туркумни ўчириб ташламоқчимисиз?",
+  "toastifyNewCategoryAddedSucces": "Янги туркум қўшилди"
 }
