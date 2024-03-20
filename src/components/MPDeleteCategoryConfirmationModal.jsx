@@ -12,7 +12,7 @@ export default function MPDeleteCategoryConfirmationModal() {
   const { deleteCategoryConfirmationModal } = useSelector(
     (state) => state.modalsSlice,
   );
-  const { currentID } = useSelector((state) => state.deleteElementIDSlice);
+  const { currentID } = useSelector((state) => state.currentActionIDSlice);
 
   const { t } = useTranslation();
 

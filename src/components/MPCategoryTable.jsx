@@ -14,7 +14,7 @@ import { IoMdArchive } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { modalManager } from "../redux/slices/modals";
-import { setID } from "../redux/slices/delete-element-id";
+import { setID } from "../redux/slices/current-action-id";
 import { handleArchiveCategory } from "../redux/slices/categories";
 
 export default function MPCategoryTable({ categories, loading }) {
@@ -22,6 +22,7 @@ export default function MPCategoryTable({ categories, loading }) {
   const dispatch = useDispatch();
 
   function handleEdit(id) {
+    dispatch(setID(id));
     dispatch(modalManager("updateCategoryModal"));
   }
 

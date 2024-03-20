@@ -3,16 +3,28 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { modalManager } from "../redux/slices/modals";
+import getFormData from "../utils/get-form-data";
+import { editCategory } from "../redux/slices/categories";
 
 function MPUpdateCategoryModal() {
   const { t } = useTranslation();
   const submitter = useRef(null);
   const dispatch = useDispatch();
   const { updateCategoryModal } = useSelector((state) => state.modalsSlice);
+  const { currentID } = useSelector((state) => state.currentActionIDSlice);
+
   function handleModal() {
     dispatch(modalManager("updateCategoryModal"));
   }
-  function handleSubmit() {}
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const data = getFormData(e.target);
+    data.id = currentID;
+    dispatch(editCategory(data));
+    handleModal();
+  }
+
   return (
     <Modal
       dismissible
