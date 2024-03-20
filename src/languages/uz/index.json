@@ -14,6 +14,7 @@
   "settings": "Sozlamalar",
   "exit": "Chiqish",
   "login": "Kirish",
+  "mustLogin": "Tizimga qayta kirishingiz kerak",
   "toastifyLoginSucces": "Tizimga muvaffaqiyatli kirdingiz",
   "toastifyLoginError": "Telefon raqam yoki parol noto'g'ri kiritilgan",
   "loading": "Yuklanmoqda...",

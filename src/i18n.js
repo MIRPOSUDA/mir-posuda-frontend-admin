@@ -1,23 +1,23 @@
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
-import cyrillic from "./languages/cyrillic";
-import latin from "./languages/latin";
+import cr from "./languages/cr";
+import uz from "./languages/uz";
 import ru from "./languages/ru";
 
 i18n.use(initReactI18next).init({
   resources: {
-    cyrillic: {
-      translation: cyrillic,
+    cr: {
+      translation: cr,
     },
-    latin: {
-      translation: latin,
+    uz: {
+      translation: uz,
     },
     ru: {
       translation: ru,
     },
   },
-  lng: localStorage.getItem("language") || "cyrillic",
-  fallbackLng: "cyrillic",
+  lng: localStorage.getItem("language") || "cr",
+  fallbackLng: "cr",
 
   interpolation: {
     escapeValue: false,
