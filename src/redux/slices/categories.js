@@ -9,14 +9,14 @@ const initialState = {
 
 // CRUD category
 const baseUrl = "https://admin.mirzobox.uz/api";
-const user = localStorage.getItem("user");
+// const user = localStorage.getItem("user");
 
 export const getCategory = createAsyncThunk(
   "getCategory/categories",
   async (_, thunkAPI) => {
     try {
       const language = localStorage.getItem("language") || "cr";
-      // const user = thunkAPI.getState().userSlice.user;
+      const user = thunkAPI.getState().userSlice.user;
       const req = await fetch(baseUrl + `/category/get-all/${language}`, {
         headers: {
           Authorization: `Bearer ${user?.token}`,
