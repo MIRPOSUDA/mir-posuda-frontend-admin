@@ -13,7 +13,7 @@ export default function MPPasswordInput() {
         type={hidden ? "password" : "text"}
         name="password"
         placeholder={t("password")}
-        value="Admin.123$"
+        defaultValue="Admin.123$"
         autoComplete="off"
         required
       />

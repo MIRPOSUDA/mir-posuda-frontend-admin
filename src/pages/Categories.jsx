@@ -1,31 +1,19 @@
 import { useTranslation } from "react-i18next";
-import useCategory from "../hooks/useCategory";
-import { useEffect, useState } from "react";
 import MPCategoryTable from "../components/MPCategoryTable";
-import { useDispatch } from "react-redux";
-import { setUser } from "../redux/slices/user";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "flowbite-react";
 import { FaPlus } from "react-icons/fa6";
 import { modalManager } from "../redux/slices/modals";
-import { toast } from "sonner";
+import { getCategory } from "../redux/slices/categories";
+import { useEffect } from "react";
 
 export default function Categories() {
-  const [categories, setCategories] = useState(null);
   const { t } = useTranslation();
-  const { getCategory } = useCategory();
   const dispatch = useDispatch();
-
   useEffect(() => {
-    getCategory()
-      .then((res) => {
-        setCategories(res);
-      })
-      .catch(({ message }) => {
-        toast.info(message);
-        dispatch(setUser(null));
-      });
+    dispatch(getCategory());
   }, []);
-
+  const { data, loading } = useSelector((state) => state.categoriesSlice);
   function handleModal() {
     dispatch(modalManager("addCategoryModal"));
   }
@@ -39,7 +27,7 @@ export default function Categories() {
           {t("addCategory")}
         </Button>
       </div>
-      <MPCategoryTable categories={categories} />
+      <MPCategoryTable categories={data} loading={loading} />
     </div>
   );
 }

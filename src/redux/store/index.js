@@ -3,11 +3,13 @@ import userSlice from "../slices/user";
 import sideBarSlice from "../slices/sidebar";
 import modalsSlice from "../slices/modals";
 import deleteElementIDSlice from "../slices/delete-element-id";
+import categoriesSlice from "../slices/categories";
 export const store = configureStore({
   reducer: {
     userSlice,
     sideBarSlice,
     modalsSlice,
     deleteElementIDSlice,
+    categoriesSlice,
   },
 });

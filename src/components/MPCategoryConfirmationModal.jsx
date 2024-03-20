@@ -5,6 +5,7 @@ import { modalManager } from "../redux/slices/modals";
 import { useTranslation } from "react-i18next";
 import useCategory from "../hooks/useCategory";
 import { toast } from "sonner";
+import { deleteCategory } from "../redux/slices/categories";
 
 export default function MPCategoryConfirmationModal() {
   const dispatch = useDispatch();
@@ -12,7 +13,6 @@ export default function MPCategoryConfirmationModal() {
     (state) => state.modalsSlice,
   );
   const { currentID } = useSelector((state) => state.deleteElementIDSlice);
-  const { deleteCategory } = useCategory();
 
   const { t } = useTranslation();
 
@@ -21,14 +21,7 @@ export default function MPCategoryConfirmationModal() {
   }
 
   function handleDelete() {
-    deleteCategory(currentID)
-      .then((res) => {
-        toast.success("Kategoriya o'chirildi");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-        console.error(error);
-      });
+    dispatch(deleteCategory(currentID));
     handleModal();
   }
 

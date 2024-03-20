@@ -4,12 +4,10 @@ import { modalManager } from "../redux/slices/modals";
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
 import getFormData from "../utils/get-form-data";
-import useCategory from "../hooks/useCategory";
-import { toast } from "sonner";
+import { addCategory } from "../redux/slices/categories";
 
 export default function MPCategoryModal() {
   const { addCategoryModal } = useSelector((state) => state.modalsSlice);
-  const { addCategory } = useCategory();
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const submitter = useRef(null);
@@ -19,7 +17,8 @@ export default function MPCategoryModal() {
   function handleSubmit(e) {
     e.preventDefault();
     const data = getFormData(e.target);
-    addCategory(data);
+    dispatch(addCategory(data));
+    handleModal();
   }
   return (
     <>
@@ -58,11 +57,12 @@ export default function MPCategoryModal() {
           </form>
         </Modal.Body>
         <Modal.Footer className="justify-end">
-          <Button color="gray" onClick={handleSubmit}>
+          <Button type="button" color="gray" onClick={handleModal}>
             {t("decline")}
           </Button>
           <Button
-            className="w-28 text-center"
+            className="w-36 text-center"
+            type="button"
             onClick={() => {
               submitter.current.click();
             }}

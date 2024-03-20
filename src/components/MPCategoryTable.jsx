@@ -15,13 +15,13 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { modalManager } from "../redux/slices/modals";
 import { setID } from "../redux/slices/delete-element-id";
-import useCategory from "../hooks/useCategory";
-import { toast } from "sonner";
+import { handleArchiveCategory } from "../redux/slices/categories";
 
-export default function MPCategoryTable({ categories }) {
+export default function MPCategoryTable({ categories, loading }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { handleArchiveCategory } = useCategory();
+
+  function handleEdit(id) {}
 
   function handleDelete(id) {
     dispatch(setID(id));
@@ -29,8 +29,7 @@ export default function MPCategoryTable({ categories }) {
   }
 
   function handleArchive(id, mode) {
-    toast.success("Arxivlandi");
-    handleArchiveCategory(id, mode);
+    dispatch(handleArchiveCategory({ id, mode }));
   }
 
   return (
@@ -61,7 +60,7 @@ export default function MPCategoryTable({ categories }) {
                   </TableCell>
                   <TableCell className="flex justify-end gap-2">
                     <Tooltip content={t("edit")}>
-                      <Button size="xs">
+                      <Button onClick={() => handleEdit(id)} size="xs">
                         <MdOutlineEdit />
                       </Button>
                     </Tooltip>
