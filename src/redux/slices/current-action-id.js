@@ -4,8 +4,8 @@ const initialState = {
   currentID: 0,
 };
 
-export const deleteElementIDSlice = createSlice({
-  name: "deleteElementIDSlice",
+export const currentActionIDSlice = createSlice({
+  name: "ID",
   initialState,
   reducers: {
     setID(state, { payload }) {
@@ -14,6 +14,6 @@ export const deleteElementIDSlice = createSlice({
   },
 });
 
-export const { setID } = deleteElementIDSlice.actions;
+export const { setID } = currentActionIDSlice.actions;
 
-export default deleteElementIDSlice.reducer;
+export default currentActionIDSlice.reducer;

@@ -2,14 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "../slices/user";
 import sideBarSlice from "../slices/sidebar";
 import modalsSlice from "../slices/modals";
-import deleteElementIDSlice from "../slices/delete-element-id";
+import currentActionIDSlice from "../slices/current-action-id";
 import categoriesSlice from "../slices/categories";
 export const store = configureStore({
   reducer: {
     userSlice,
     sideBarSlice,
     modalsSlice,
-    deleteElementIDSlice,
+    currentActionIDSlice,
     categoriesSlice,
   },
 });
