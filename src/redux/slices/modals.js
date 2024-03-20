@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   addCategoryModal: false,
   deleteCategoryConfirmationModal: false,
+  updateCategoryModal: false,
 };
 
 export const modalsSlice = createSlice({

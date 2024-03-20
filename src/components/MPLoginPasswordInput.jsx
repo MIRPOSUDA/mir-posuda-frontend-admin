@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
-export default function MPPasswordInput() {
+export default function MPLoginPasswordInput() {
   const [hidden, setHidden] = useState(true);
   const { t } = useTranslation();
   return (

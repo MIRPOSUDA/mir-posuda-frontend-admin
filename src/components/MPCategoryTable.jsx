@@ -21,7 +21,9 @@ export default function MPCategoryTable({ categories, loading }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  function handleEdit(id) {}
+  function handleEdit(id) {
+    dispatch(modalManager("updateCategoryModal"));
+  }
 
   function handleDelete(id) {
     dispatch(setID(id));

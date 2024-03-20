@@ -1,7 +1,7 @@
 import { TextInput } from "flowbite-react";
 import { useState } from "react";
 
-export default function MPNumberInput() {
+export default function MPLoginNumberInput() {
   const [number, setNumber] = useState("(90) 861-80-18");
 
   function maskPhone(number) {

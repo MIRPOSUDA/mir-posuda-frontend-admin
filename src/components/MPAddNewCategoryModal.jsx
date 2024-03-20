@@ -6,7 +6,7 @@ import { useRef } from "react";
 import getFormData from "../utils/get-form-data";
 import { addCategory } from "../redux/slices/categories";
 
-export default function MPCategoryModal() {
+export default function MPAddNewCategoryModal() {
   const { addCategoryModal } = useSelector((state) => state.modalsSlice);
   const dispatch = useDispatch();
   const { t } = useTranslation();

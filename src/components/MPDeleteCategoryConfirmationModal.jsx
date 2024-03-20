@@ -7,7 +7,7 @@ import useCategory from "../hooks/useCategory";
 import { toast } from "sonner";
 import { deleteCategory } from "../redux/slices/categories";
 
-export default function MPCategoryConfirmationModal() {
+export default function MPDeleteCategoryConfirmationModal() {
   const dispatch = useDispatch();
   const { deleteCategoryConfirmationModal } = useSelector(
     (state) => state.modalsSlice,

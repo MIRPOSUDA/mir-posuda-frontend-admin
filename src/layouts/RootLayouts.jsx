@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
 import MPSidebar from "../components/MPSidebar";
 import Header from "../components/Header";
-import MPCategoryModal from "../components/MPCategoryModal";
-import MPCategoryConfirmationModal from "../components/MPCategoryConfirmationModal";
+import MPDeleteCategoryConfirmationModal from "../components/MPDeleteCategoryConfirmationModal";
+import MPAddNewCategoryModal from "../components/MPAddNewCategoryModal";
+import MPUpdateCategoryModal from "../components/MPUpdateCategoryModal";
 
 export default function RootLayouts() {
   return (
@@ -14,8 +15,9 @@ export default function RootLayouts() {
           <Outlet />
         </main>
       </div>
-      <MPCategoryModal />
-      <MPCategoryConfirmationModal />
+      <MPAddNewCategoryModal />
+      <MPDeleteCategoryConfirmationModal />
+      <MPUpdateCategoryModal />
     </>
   );
 }

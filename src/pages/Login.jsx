@@ -4,11 +4,10 @@ import { setLoading, setUser } from "../redux/slices/user";
 import { useTranslation } from "react-i18next";
 import LogoImg from "/assets/logo.jpg";
 import getFormData from "../utils/get-form-data";
-import MPNumberInput from "../components/MPNumberInput";
-import MPPasswordInput from "../components/MPPasswordInput";
 import useLogin from "../hooks/useLogin";
 import getFormattedNumber from "../utils/get-formatted-number";
 import { toast } from "sonner";
+import MPLoginNumberInput from "../components/MPLoginNumberInput";
 
 export default function Login() {
   const { loginWithPhoneNumberAndPassword } = useLogin();
@@ -57,13 +56,13 @@ export default function Login() {
             <div className="mb-2 block">
               <Label htmlFor="phoneNumber" value={t("enterPhoneNumber")} />
             </div>
-            <MPNumberInput />
+            <MPLoginNumberInput />
           </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="password" value={t("enterPassword")} />
             </div>
-            <MPPasswordInput />
+            <MPLoginNumberInput />
           </div>
           <Button type="submit" disabled={isLoading}>
             {isLoading ? <Spinner size="sm" /> : t("login")}
