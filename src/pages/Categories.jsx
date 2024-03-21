@@ -19,7 +19,7 @@ export default function Categories() {
   }
 
   return (
-    <div className="flex flex-col">
+    <section className="flex flex-col">
       <div className="mb-5 flex justify-between">
         <h2 className="text-2xl font-bold">{t("categories")}</h2>
         <Button color="dark" onClick={handleModal}>
@@ -28,6 +28,6 @@ export default function Categories() {
         </Button>
       </div>
       <MPCategoryTable categories={data} loading={loading} />
-    </div>
+    </section>
   );
 }
