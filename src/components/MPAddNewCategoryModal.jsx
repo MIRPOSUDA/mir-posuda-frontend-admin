@@ -4,7 +4,7 @@ import { modalManager } from "../redux/slices/modals";
 import { useTranslation } from "react-i18next";
 import { useRef } from "react";
 import getFormData from "../utils/get-form-data";
-import { addCategory } from "../redux/slices/categories";
+import { addCategory, stateAddCategory } from "../redux/slices/categories";
 
 export default function MPAddNewCategoryModal() {
   const { addCategoryModal } = useSelector((state) => state.modalsSlice);
@@ -18,6 +18,7 @@ export default function MPAddNewCategoryModal() {
     e.preventDefault();
     const data = getFormData(e.target);
     dispatch(addCategory(data));
+    dispatch(stateAddCategory(data));
     handleModal();
   }
   return (

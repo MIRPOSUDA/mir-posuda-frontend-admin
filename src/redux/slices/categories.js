@@ -116,7 +116,36 @@ export const editCategory = createAsyncThunk(
 export const categoriesSlice = createSlice({
   name: "categories",
   initialState,
-  reducers: {},
+  reducers: {
+    stateAddCategory(state, { payload }) {
+      state.data.push(payload);
+    },
+    stateDeleteCategory(state, { payload }) {
+      state.data = state.data.filter((element) => element.id !== payload);
+      toast.success("O'chirildi");
+    },
+    stateHandleArchiveCategory(state, { payload }) {
+      state.data.forEach((element) => {
+        if (payload.mode === "archive" && element.id === payload.id) {
+          element.isActive = false;
+          toast.success("Arxivlandi");
+        }
+        if (payload.mode === "unarchive" && element.id === payload.id) {
+          element.isActive = true;
+          toast.success("Arxivdan chiqdi");
+        }
+      });
+    },
+    stateEditCategory(state, { payload }) {
+      state.data.forEach((element) => {
+        if (element.id === payload.id) {
+          console.log(element);
+          element.updateAt = new Date().getTime();
+        }
+      });
+      toast.success("Kategoriya ma'lumotlari yangilandi");
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getCategory.pending, (state) => {
@@ -134,5 +163,12 @@ export const categoriesSlice = createSlice({
       });
   },
 });
+
+export const {
+  stateAddCategory,
+  stateDeleteCategory,
+  stateHandleArchiveCategory,
+  stateEditCategory,
+} = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

@@ -3,9 +3,10 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { modalManager } from "../redux/slices/modals";
 import { useTranslation } from "react-i18next";
-import useCategory from "../hooks/useCategory";
-import { toast } from "sonner";
-import { deleteCategory } from "../redux/slices/categories";
+import {
+  deleteCategory,
+  stateDeleteCategory,
+} from "../redux/slices/categories";
 
 export default function MPDeleteCategoryConfirmationModal() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export default function MPDeleteCategoryConfirmationModal() {
 
   function handleDelete() {
     dispatch(deleteCategory(currentID));
+    dispatch(stateDeleteCategory(currentID));
     handleModal();
   }
 

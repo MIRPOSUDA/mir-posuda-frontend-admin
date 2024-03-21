@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { modalManager } from "../redux/slices/modals";
 import getFormData from "../utils/get-form-data";
-import { editCategory } from "../redux/slices/categories";
+import { editCategory, stateEditCategory } from "../redux/slices/categories";
 
 function MPUpdateCategoryModal() {
   const { t } = useTranslation();
@@ -22,6 +22,7 @@ function MPUpdateCategoryModal() {
     const data = getFormData(e.target);
     data.id = currentID;
     dispatch(editCategory(data));
+    dispatch(stateEditCategory(data));
     handleModal();
   }
 

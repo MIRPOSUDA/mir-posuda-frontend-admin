@@ -15,7 +15,11 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { modalManager } from "../redux/slices/modals";
 import { setID } from "../redux/slices/current-action-id";
-import { handleArchiveCategory } from "../redux/slices/categories";
+import {
+  handleArchiveCategory,
+  stateHandleArchiveCategory,
+} from "../redux/slices/categories";
+import { TbArrowsSort } from "react-icons/tb";
 
 export default function MPCategoryTable({ categories, loading }) {
   const { t } = useTranslation();
@@ -32,22 +36,40 @@ export default function MPCategoryTable({ categories, loading }) {
   }
 
   function handleArchive(id, mode) {
-    dispatch(handleArchiveCategory({ id, mode }));
+    const data = { id, mode };
+    dispatch(handleArchiveCategory(data));
+    dispatch(stateHandleArchiveCategory(data));
   }
 
   return (
-    <div>
+    <div className="relative">
       <Table hoverable>
         <TableHead>
-          <TableHeadCell>{t("id")}</TableHeadCell>
-          <TableHeadCell>{t("categories")}</TableHeadCell>
-          <TableHeadCell>{t("status")}</TableHeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">{t("edit")}</span>
+          <TableHeadCell className="w-1/4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800">
+            <span className="flex items-center justify-between">
+              {t("id")}
+              <TbArrowsSort />
+            </span>
+          </TableHeadCell>
+          <TableHeadCell className="w-1/4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800">
+            <span className="flex items-center justify-between">
+              {t("categories")}
+              <TbArrowsSort />
+            </span>
+          </TableHeadCell>
+          <TableHeadCell className="w-1/4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800">
+            <span className="flex items-center justify-between">
+              {t("status")}
+              <TbArrowsSort />
+            </span>
+          </TableHeadCell>
+          <Table.HeadCell className="w-1/4 text-right">
+            <span className="">{t("edit")}</span>
           </Table.HeadCell>
         </TableHead>
         <TableBody className="relative divide-y">
-          {categories ? (
+          {!loading &&
+            categories &&
             categories.map(({ name, id, isActive }) => {
               return (
                 <TableRow
@@ -90,20 +112,20 @@ export default function MPCategoryTable({ categories, loading }) {
                   </TableCell>
                 </TableRow>
               );
-            })
-          ) : (
-            <div className="absolute left-2/4 top-16 flex -translate-x-2/4 select-none items-center gap-5">
-              <Spinner />
-              <span>{t("loading")}</span>
-            </div>
-          )}
-          {categories?.length === 0 && (
-            <span className="absolute left-2/4 top-16 flex -translate-x-2/4 select-none items-center gap-5">
-              {t("noCategories")}
-            </span>
-          )}
+            })}
         </TableBody>
       </Table>
+      {loading && (
+        <div className="absolute left-2/4 top-24 flex -translate-x-2/4 select-none items-center gap-5">
+          <Spinner />
+          <span>{t("loading")}</span>
+        </div>
+      )}
+      {!loading && categories?.length === 0 && (
+        <span className="absolute left-2/4 top-24 flex -translate-x-2/4 select-none items-center gap-5">
+          {t("noCategories")}
+        </span>
+      )}
     </div>
   );
 }
