@@ -58,12 +58,6 @@ export default function Login() {
             </div>
             <MPLoginNumberInput />
           </div>
-          <div>
-            <div className="mb-2 block">
-              <Label htmlFor="password" value={t("enterPassword")} />
-            </div>
-            <MPLoginNumberInput />
-          </div>
           <Button type="submit" disabled={isLoading}>
             {isLoading ? <Spinner size="sm" /> : t("login")}
           </Button>
