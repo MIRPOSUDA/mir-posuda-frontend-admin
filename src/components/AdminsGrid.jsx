@@ -1,15 +1,20 @@
 import { Button, Card, Spinner, Tooltip } from "flowbite-react";
 import { FaInfoCircle } from "react-icons/fa";
 import { IoMdArchive } from "react-icons/io";
-import { MdDelete, MdOutlineEdit, MdUnarchive } from "react-icons/md";
+import { MdDelete, MdUnarchive } from "react-icons/md";
 import AdminAvatar from "/assets/admin.png";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { setID } from "../redux/slices/current-action-id";
+import { modalManager } from "../redux/slices/modals";
 
 function AdminsGrid({ admins, loading }) {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
-  function handleDelete(phoneNumber) {
-    dispatch(deleteAdmin({ phoneNumber }));
+  function handleDelete(id) {
+    dispatch(setID(id));
+    dispatch(modalManager("deleteAdminConfirmationModal"));
   }
 
   return (
@@ -55,7 +60,7 @@ function AdminsGrid({ admins, loading }) {
                       </Tooltip>
                       <Tooltip content={t("delete")}>
                         <Button
-                          onClick={() => handleDelete(phoneNumber)}
+                          onClick={() => handleDelete(id)}
                           color="failure"
                           size="sm"
                         >

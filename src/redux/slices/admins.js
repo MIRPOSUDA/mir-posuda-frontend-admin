@@ -37,6 +37,63 @@ export const getAdmins = createAsyncThunk(
   },
 );
 
+export const addAdmin = createAsyncThunk(
+  "addAdmin/admins",
+  async (adminInfo, thunkAPI) => {
+    try {
+      const user = thunkAPI.getState().userSlice.user;
+      const req = await fetch(baseUrl + "/auth/register", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(adminInfo),
+      });
+      switch (req.status) {
+        case 200:
+          return await req.json();
+        case 204:
+          return [];
+        case 401:
+          throw new Error(t("mustLogin"));
+        default:
+          req;
+      }
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
+export const deleteAdmin = createAsyncThunk(
+  "deleteAdmin/admins",
+  async (id, thunkAPI) => {
+    try {
+      const user = thunkAPI.getState().userSlice.user;
+      const req = await fetch(baseUrl + `/auth/delete-account/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      switch (req.status) {
+        case 200:
+          return await req.json();
+        case 204:
+          return [];
+        case 401:
+          throw new Error(t("mustLogin"));
+        default:
+          req;
+      }
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
 export const adminsSlice = createSlice({
   name: "admins",
   initialState,

@@ -34,5 +34,6 @@
   "deleteCategoryConfirmation": "Вы уверены, что хотите удалить эту категорию?",
   "toastifyNewCategoryAddedSucces": "Добавлена ​​новая категория",
   "info": "Информация",
-  "addAdmin": "Добавить администратора"
+  "addAdmin": "Добавить администратора",
+  "deleteAdminConfirmation": "Вы уверены, что хотите удалить этого администратора?"
 }

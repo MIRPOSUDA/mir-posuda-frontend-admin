@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import MPDeleteCategoryConfirmationModal from "../components/MPDeleteCategoryConfirmationModal";
 import MPAddNewCategoryModal from "../components/MPAddNewCategoryModal";
 import MPUpdateCategoryModal from "../components/MPUpdateCategoryModal";
+import MPAddNewAdminModal from "../components/MPAddNewAdminModal";
+import MPDeleteAdminConfirmationModal from "../components/MPDeleteAdminConfirmationModal";
 
 export default function RootLayouts() {
   return (
@@ -15,9 +17,13 @@ export default function RootLayouts() {
           <Outlet />
         </main>
       </div>
+
+      {/* Modals */}
       <MPAddNewCategoryModal />
       <MPDeleteCategoryConfirmationModal />
       <MPUpdateCategoryModal />
+      <MPAddNewAdminModal />
+      <MPDeleteAdminConfirmationModal />
     </>
   );
 }

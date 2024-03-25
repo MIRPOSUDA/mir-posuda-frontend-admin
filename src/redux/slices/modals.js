@@ -4,6 +4,8 @@ const initialState = {
   addCategoryModal: false,
   deleteCategoryConfirmationModal: false,
   updateCategoryModal: false,
+  addAdminModal: false,
+  deleteAdminConfirmationModal: false,
 };
 
 export const modalsSlice = createSlice({
