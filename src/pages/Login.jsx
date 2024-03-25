@@ -13,7 +13,7 @@ export default function Login() {
   const { loginWithPhoneNumberAndPassword } = useLogin();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { isLoading } = useSelector((state) => state.userSlice);
+  const { loading } = useSelector((state) => state.userSlice);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -58,8 +58,8 @@ export default function Login() {
             </div>
             <MPLoginNumberInput />
           </div>
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? <Spinner size="sm" /> : t("login")}
+          <Button type="submit" disabled={loading}>
+            {loading ? <Spinner size="sm" /> : t("login")}
           </Button>
         </form>
       </div>

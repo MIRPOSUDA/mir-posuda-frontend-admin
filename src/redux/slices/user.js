@@ -4,7 +4,7 @@ const user = JSON.parse(localStorage.getItem("user")) || null;
 
 const initialState = {
   user,
-  isLoading: false,
+  loading: false,
 };
 
 export const userSlice = createSlice({
@@ -16,7 +16,7 @@ export const userSlice = createSlice({
       localStorage.setItem("user", JSON.stringify(state.user));
     },
     setLoading(state, { payload }) {
-      state.isLoading = payload;
+      state.loading = payload;
     },
   },
 });
