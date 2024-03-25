@@ -32,5 +32,7 @@
   "decline": "Bekor qilish",
   "id": "ID",
   "deleteCategoryConfirmation": "Haqiqatan ham ushbu turkumni o'chirib tashlamoqchimisiz?",
-  "toastifyNewCategoryAddedSucces": "Yangi turkum qo'shildi"
+  "toastifyNewCategoryAddedSucces": "Yangi turkum qo'shildi",
+  "info": "Ma'lumotnoma",
+  "addAdmin": "Admin qo'shish"
 }

@@ -32,5 +32,7 @@
   "decline": "Бекор қилиш",
   "id": "ИД",
   "deleteCategoryConfirmation": "Ҳақиқатан ҳам ушбу туркумни ўчириб ташламоқчимисиз?",
-  "toastifyNewCategoryAddedSucces": "Янги туркум қўшилди"
+  "toastifyNewCategoryAddedSucces": "Янги туркум қўшилди",
+  "info": "Маълумотнома",
+  "addAdmin": "Админ қўшиш"
 }

@@ -32,5 +32,7 @@
   "decline": "Отмена",
   "id": "ИД",
   "deleteCategoryConfirmation": "Вы уверены, что хотите удалить эту категорию?",
-  "toastifyNewCategoryAddedSucces": "Добавлена ​​новая категория"
+  "toastifyNewCategoryAddedSucces": "Добавлена ​​новая категория",
+  "info": "Информация",
+  "addAdmin": "Добавить администратора"
 }
