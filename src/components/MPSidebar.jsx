@@ -8,18 +8,28 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 export default function MPSidebar() {
   const { open } = useSelector((state) => state.sideBarSlice);
+  const { user } = useSelector((state) => state.userSlice);
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { t } = useTranslation();
   const links = [
-    { title: t("mainPage"), path: "/", icon: RiHome3Line },
-    { title: t("admins"), path: "/admins", icon: HiUser },
+    { title: t("mainPage"), path: "/", icon: RiHome3Line, order: 1 },
     {
       title: t("categories"),
       path: "/categories",
       icon: TbCategoryPlus,
+      order: 3,
     },
   ];
+
+  if (user.roles === "SuperAdmin") {
+    links.push({
+      title: t("admins"),
+      path: "/admins",
+      icon: HiUser,
+      order: 2,
+    });
+  }
 
   const customTheme = {
     root: {
@@ -41,19 +51,21 @@ export default function MPSidebar() {
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          {links.map(({ path, title, icon }) => {
-            return (
-              <Sidebar.Item
-                className="cursor-pointer"
-                onClick={() => navigate(path)}
-                key={title}
-                icon={icon}
-                active={path === pathname ? true : false}
-              >
-                {title}
-              </Sidebar.Item>
-            );
-          })}
+          {links
+            .sort((a, b) => a.order - b.order)
+            .map(({ path, title, icon }) => {
+              return (
+                <Sidebar.Item
+                  className="cursor-pointer"
+                  onClick={() => navigate(path)}
+                  key={title}
+                  icon={icon}
+                  active={path === pathname ? true : false}
+                >
+                  {title}
+                </Sidebar.Item>
+              );
+            })}
         </Sidebar.ItemGroup>
       </Sidebar.Items>
     </Sidebar>

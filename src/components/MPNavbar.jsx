@@ -10,8 +10,9 @@ import {
   Tooltip,
 } from "flowbite-react";
 import { HiOutlineBellAlert, HiBars3BottomRight } from "react-icons/hi2";
+import { HiCog, HiLogout } from "react-icons/hi";
 import LogoImg from "/assets/logo.jpg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sidebarManager } from "../redux/slices/sidebar";
 import Notification from "./Notification";
 import { useNavigate } from "react-router-dom";
@@ -20,10 +21,9 @@ import { setUser } from "../redux/slices/user";
 
 export default function MPNavbar() {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
-
   const { t } = useTranslation();
+  const { user } = useSelector((state) => state.userSlice);
 
   function handleSideBar() {
     dispatch(sidebarManager());
@@ -85,16 +85,18 @@ export default function MPNavbar() {
             }
           >
             <DropdownHeader>
-              <span className="block text-sm">Mirzo Ulug'bek</span>
+              <span className="block text-sm">{user.fullName}</span>
               <span className="block truncate text-sm font-medium">
-                +998887291129
+                {user.phoneNumber}
               </span>
             </DropdownHeader>
-            <DropdownItem onClick={() => navigate("/settings")}>
+            <DropdownItem onClick={() => navigate("/settings")} icon={HiCog}>
               {t("settings")}
             </DropdownItem>
             <DropdownDivider />
-            <DropdownItem onClick={logout}>{t("exit")}</DropdownItem>
+            <DropdownItem onClick={logout} icon={HiLogout}>
+              {t("exit")}
+            </DropdownItem>
           </Dropdown>
         </div>
       </div>
