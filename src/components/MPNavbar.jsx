@@ -54,7 +54,7 @@ export default function MPNavbar() {
         </Navbar.Brand>
         <button
           onClick={handleSideBar}
-          className="relative rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+          className="relative rounded-lg bg-gray-100 p-2.5 text-sm text-gray-500 transition-opacity hover:opacity-80 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:bg-gray-700 dark:text-gray-400 dark:focus:ring-gray-700"
         >
           <HiBars3BottomRight className="h-5 w-5" />
         </button>
