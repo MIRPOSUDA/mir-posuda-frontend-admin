@@ -6,6 +6,7 @@ import MPAddNewCategoryModal from "../components/MPAddNewCategoryModal";
 import MPUpdateCategoryModal from "../components/MPUpdateCategoryModal";
 import MPAddNewAdminModal from "../components/MPAddNewAdminModal";
 import MPDeleteAdminConfirmationModal from "../components/MPDeleteAdminConfirmationModal";
+import LogoutLayer from "../components/LogoutLayer";
 
 export default function RootLayouts() {
   return (
@@ -17,6 +18,9 @@ export default function RootLayouts() {
           <Outlet />
         </main>
       </div>
+
+      {/* Layers */}
+      <LogoutLayer />
 
       {/* Modals */}
       <MPAddNewCategoryModal />

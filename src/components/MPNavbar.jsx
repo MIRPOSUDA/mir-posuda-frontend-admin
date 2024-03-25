@@ -17,7 +17,7 @@ import { sidebarManager } from "../redux/slices/sidebar";
 import Notification from "./Notification";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { setUser } from "../redux/slices/user";
+import { authLogout } from "../redux/slices/user";
 
 export default function MPNavbar() {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ export default function MPNavbar() {
   }
 
   function logout() {
-    dispatch(setUser(null));
+    dispatch(authLogout({ phoneNumber: user.phoneNumber }));
   }
 
   return (

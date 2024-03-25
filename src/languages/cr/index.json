@@ -16,7 +16,9 @@
   "login": "Кириш",
   "mustLogin": "Тизимга қайта киришингиз керак",
   "toastifyLoginSucces": "Тизимга муваффақиятли кирдингиз",
-  "toastifyLoginError": "Телефон рақам ёки пароль нотўғри киритилган",
+  "toastifyLoginError": "Телефон рақам нотўғри киритилган",
+  "toastifyLogoutSucces": "Тизимдан муваффақиятли чиқдингиз",
+  "toastifyLogoutError": "Тизимдан чиқишда хатолик",
   "loading": "Юкланмоқда...",
   "status": "Фаоллик",
   "edit": "Таҳрирлаш",
@@ -35,5 +37,6 @@
   "toastifyNewCategoryAddedSucces": "Янги туркум қўшилди",
   "info": "Маълумотнома",
   "addAdmin": "Админ қўшиш",
-  "deleteAdminConfirmation": "Ҳақиқатан ҳам ушбу админни ўчириб ташламоқчимисиз?"
+  "deleteAdminConfirmation": "Ҳақиқатан ҳам ушбу админни ўчириб ташламоқчимисиз?",
+  "logoutLoading": "Тизимдан чиқилмоқда..."
 }

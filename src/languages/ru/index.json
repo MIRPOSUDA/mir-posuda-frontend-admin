@@ -16,7 +16,9 @@
   "login": "Вход",
   "mustLogin": "Вы должны войти снова",
   "toastifyLoginSucces": "Вы успешно вошли в",
-  "toastifyLoginError": "Номер телефона или пароль был введен неверно",
+  "toastifyLoginError": "Номер телефона был введен неверно",
+  "toastifyLogoutSucces": "Вы успешно вышли из системы",
+  "toastifyLogoutError": "Ошибка выхода из системы",
   "loading": "Загрузка...",
   "status": "Активность",
   "edit": "Редактировать",
@@ -35,5 +37,6 @@
   "toastifyNewCategoryAddedSucces": "Добавлена ​​новая категория",
   "info": "Информация",
   "addAdmin": "Добавить администратора",
-  "deleteAdminConfirmation": "Вы уверены, что хотите удалить этого администратора?"
+  "deleteAdminConfirmation": "Вы уверены, что хотите удалить этого администратора?",
+  "logoutLoading": "Выход из системы..."
 }

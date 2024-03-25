@@ -1,36 +1,22 @@
 import { Button, Label, Spinner } from "flowbite-react";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading, setUser } from "../redux/slices/user";
+import { authLogin } from "../redux/slices/user";
 import { useTranslation } from "react-i18next";
 import LogoImg from "/assets/logo.jpg";
 import getFormData from "../utils/get-form-data";
-import useLogin from "../hooks/useLogin";
 import getFormattedNumber from "../utils/get-formatted-number";
-import { toast } from "sonner";
 import MPLoginNumberInput from "../components/MPLoginNumberInput";
 
 export default function Login() {
-  const { loginWithPhoneNumberAndPassword } = useLogin();
+  const { loading } = useSelector((state) => state.userSlice);
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const { loading } = useSelector((state) => state.userSlice);
 
   function handleSubmit(e) {
     e.preventDefault();
     const data = getFormData(e.target);
     data.phoneNumber = getFormattedNumber(data.phoneNumber);
-    dispatch(setLoading(true));
-    loginWithPhoneNumberAndPassword(data)
-      .then((res) => {
-        dispatch(setUser(res));
-        dispatch(setLoading(false));
-        toast.success(t("toastifyLoginSucces"));
-      })
-      .catch(() => {
-        dispatch(setUser(null));
-        dispatch(setLoading(false));
-        toast.error(t("toastifyLoginError"));
-      });
+    dispatch(authLogin(data));
   }
 
   return (

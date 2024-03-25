@@ -16,7 +16,9 @@
   "login": "Kirish",
   "mustLogin": "Tizimga qayta kirishingiz kerak",
   "toastifyLoginSucces": "Tizimga muvaffaqiyatli kirdingiz",
-  "toastifyLoginError": "Telefon raqam yoki parol noto'g'ri kiritilgan",
+  "toastifyLoginError": "Telefon raqam noto'g'ri kiritilgan",
+  "toastifyLogoutSucces": "Tizimdan muvaffaqiyatli chiqdingiz",
+  "toastifyLogoutError": "Tizimdan chiqishda xatolik",
   "loading": "Yuklanmoqda...",
   "status": "Faollik",
   "edit": "Tahrirlash",
@@ -35,5 +37,6 @@
   "toastifyNewCategoryAddedSucces": "Yangi turkum qo'shildi",
   "info": "Ma'lumotnoma",
   "addAdmin": "Admin qo'shish",
-  "deleteAdminConfirmation": "Haqiqatan ham ushbu adminni o'chirib tashlamoqchimisiz?"
+  "deleteAdminConfirmation": "Haqiqatan ham ushbu adminni o'chirib tashlamoqchimisiz?",
+  "logoutLoading": "Tizimdan chiqilmoqda..."
 }
