@@ -107,6 +107,7 @@ export const adminsSlice = createSlice({
       .addCase(getAdmins.rejected, (state) => {
         state.error = state;
         state.loading = false;
+        location.pathname = "/login";
       })
       .addCase(getAdmins.fulfilled, (state, { payload }) => {
         state.data = payload;

@@ -5,6 +5,7 @@ const initialState = {
   data: null,
   loading: false,
   error: null,
+  lastElementID: 0,
 };
 
 // CRUD category
@@ -118,9 +119,16 @@ export const categoriesSlice = createSlice({
   initialState,
   reducers: {
     stateAddCategory(state, { payload }) {
-      state.data.push(payload);
+      const category = {};
+      category.isActive = true;
+      category.id = state.lastElementID + 1;
+      category.name = {};
+      console.log(payload);
+      state.data.unshift(category);
+      toast.success("Yangi kategoriya qo'shildi");
     },
     stateDeleteCategory(state, { payload }) {
+      state.lastElementID = state.data.sort((a, b) => b.id - a.id)[0]["id"];
       state.data = state.data.filter((element) => element.id !== payload);
       toast.success("O'chirildi");
     },
@@ -155,6 +163,7 @@ export const categoriesSlice = createSlice({
       .addCase(getCategory.rejected, (state) => {
         state.error = state;
         state.loading = false;
+        location.pathname = "/login";
       })
       .addCase(getCategory.fulfilled, (state, { payload }) => {
         state.data = payload;

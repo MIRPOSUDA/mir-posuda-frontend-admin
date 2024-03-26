@@ -36,7 +36,7 @@ export const authLogin = createAsyncThunk(
 
 export const authLogout = createAsyncThunk(
   "authLogout/logout",
-  async (userData, thunkAPI) => {
+  async ({ id }, thunkAPI) => {
     try {
       const user = thunkAPI.getState().userSlice.user;
       const req = await fetch(baseUrl + "/auth/logout", {
@@ -45,7 +45,9 @@ export const authLogout = createAsyncThunk(
           Authorization: `Bearer ${user.token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userData),
+        body: JSON.stringify({
+          id,
+        }),
       });
       switch (req.status) {
         case 200:
@@ -73,7 +75,7 @@ export const userSlice = createSlice({
         state.error = payload;
         state.loading = false;
         toast.error(t("toastifyLoginError"));
-        console.log(payload);
+        localStorage.removeItem("user");
       })
       .addCase(authLogin.fulfilled, (state, { payload }) => {
         state.user = payload;
@@ -87,9 +89,9 @@ export const userSlice = createSlice({
         state.error = null;
       })
       .addCase(authLogout.fulfilled, (state) => {
-        state.user = null;
         state.loading = false;
         state.error = null;
+        state.user = null;
         localStorage.removeItem("user");
         toast.success(t("toastifyLogoutSucces"));
       });
