@@ -79,6 +79,7 @@ export const userSlice = createSlice({
         state.user = payload;
         state.loading = false;
         state.error = null;
+        localStorage.setItem("user", JSON.stringify(state.user));
         toast.success(t("toastifyLoginSucces"));
       })
       .addCase(authLogout.pending, (state) => {
