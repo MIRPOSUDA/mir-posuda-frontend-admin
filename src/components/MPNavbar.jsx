@@ -30,7 +30,7 @@ export default function MPNavbar() {
   }
 
   function logout() {
-    dispatch(authLogout({ phoneNumber: user.phoneNumber }));
+    dispatch(authLogout({ id: user.id }));
   }
 
   return (
