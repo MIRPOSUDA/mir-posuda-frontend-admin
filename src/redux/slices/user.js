@@ -90,6 +90,7 @@ export const userSlice = createSlice({
         state.user = null;
         state.loading = false;
         state.error = null;
+        localStorage.removeItem("user");
         toast.success(t("toastifyLogoutSucces"));
       });
   },
