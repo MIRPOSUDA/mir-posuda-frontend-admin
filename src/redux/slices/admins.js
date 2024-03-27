@@ -8,16 +8,15 @@ const initialState = {
 
 // CRUD category
 const baseUrl = "https://admin.mirzobox.uz/api";
-// const user = localStorage.getItem("user");
+const user = JSON.parse(localStorage.getItem("user"));
 
 export const getAdmins = createAsyncThunk(
   "getAdmins/admins",
   async (_, thunkAPI) => {
     try {
-      const user = thunkAPI.getState().userSlice.user;
-      const req = await fetch(baseUrl + "/auth/admins", {
+      const req = await fetch(baseUrl + "/auth/get-all-admins", {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${user.token}`,
           "Content-Type": "application/json",
         },
       });
@@ -41,11 +40,10 @@ export const addAdmin = createAsyncThunk(
   "addAdmin/admins",
   async (adminInfo, thunkAPI) => {
     try {
-      const user = thunkAPI.getState().userSlice.user;
       const req = await fetch(baseUrl + "/auth/register", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${user.token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(adminInfo),
@@ -70,11 +68,10 @@ export const deleteAdmin = createAsyncThunk(
   "deleteAdmin/admins",
   async (id, thunkAPI) => {
     try {
-      const user = thunkAPI.getState().userSlice.user;
       const req = await fetch(baseUrl + `/auth/delete-account/${id}`, {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${user.token}`,
           "Content-Type": "application/json",
         },
       });

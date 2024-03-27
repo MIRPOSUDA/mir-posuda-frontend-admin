@@ -10,17 +10,16 @@ const initialState = {
 
 // CRUD category
 const baseUrl = "https://admin.mirzobox.uz/api";
-// const user = localStorage.getItem("user");
+const user = JSON.parse(localStorage.getItem("user"));
 
 export const getCategory = createAsyncThunk(
   "getCategory/categories",
   async (_, thunkAPI) => {
     try {
       const language = localStorage.getItem("language") || "cr";
-      const user = thunkAPI.getState().userSlice.user;
       const req = await fetch(baseUrl + `/category/get-all/${language}`, {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${user.token}`,
           "Content-Type": "application/json",
         },
       });
@@ -44,11 +43,10 @@ export const addCategory = createAsyncThunk(
   "addCategory/categories",
   async (category, thunkAPI) => {
     try {
-      const user = thunkAPI.getState().userSlice.user;
       fetch(baseUrl + "/category/create", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${user.token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(category),
@@ -63,11 +61,10 @@ export const deleteCategory = createAsyncThunk(
   "deleteCategory/categories",
   async (id, thunkAPI) => {
     try {
-      const user = thunkAPI.getState().userSlice.user;
       fetch(baseUrl + `/category/delete/${id}`, {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${user.token}`,
           "Content-Type": "application/json",
         },
       });
@@ -81,11 +78,10 @@ export const handleArchiveCategory = createAsyncThunk(
   "handleArchiveCategory/categories",
   async ({ id, mode }, thunkAPI) => {
     try {
-      const user = thunkAPI.getState().userSlice.user;
       fetch(baseUrl + `/category/${mode}/${id}`, {
         method: "PATCH",
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${user.token}`,
           "Content-Type": "application/json",
         },
       });
@@ -99,11 +95,10 @@ export const editCategory = createAsyncThunk(
   "editCategory/categories",
   async (updatedCategoryInfo, thunkAPI) => {
     try {
-      const user = thunkAPI.getState().userSlice.user;
       fetch(baseUrl + "/category/update", {
         method: "PUT",
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${user.token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedCategoryInfo),
