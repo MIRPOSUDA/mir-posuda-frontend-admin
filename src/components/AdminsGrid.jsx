@@ -5,7 +5,6 @@ import { MdDelete, MdUnarchive } from "react-icons/md";
 import AdminAvatar from "/assets/admin.png";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { setID } from "../redux/slices/current-action-id";
 import { modalManager } from "../redux/slices/modals";
 
 function AdminsGrid({ admins, loading }) {
@@ -13,7 +12,7 @@ function AdminsGrid({ admins, loading }) {
   const dispatch = useDispatch();
 
   function handleDelete(id) {
-    dispatch(setID(id));
+    localStorage.setItem("currentActionID", id);
     dispatch(modalManager("deleteAdminConfirmationModal"));
   }
 

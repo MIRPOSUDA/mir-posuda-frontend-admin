@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { FaPlus } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAdmin, getAdmins } from "../redux/slices/admins";
+import { getAdmins } from "../redux/slices/admins";
 import { modalManager } from "../redux/slices/modals";
 import AdminsGrid from "../components/AdminsGrid";
 

@@ -10,7 +10,6 @@ export default function MPDeleteAdminConfirmationModal() {
   const { deleteAdminConfirmationModal } = useSelector(
     (state) => state.modalsSlice,
   );
-  const { currentID } = useSelector((state) => state.currentActionIDSlice);
 
   const { t } = useTranslation();
 
@@ -19,6 +18,7 @@ export default function MPDeleteAdminConfirmationModal() {
   }
 
   function handleDelete() {
+    const currentID = localStorage.getItem("currentActionID");
     dispatch(deleteAdmin(currentID));
     handleModal();
   }

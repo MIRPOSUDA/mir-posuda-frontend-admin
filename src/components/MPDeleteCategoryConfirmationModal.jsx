@@ -13,7 +13,6 @@ export default function MPDeleteCategoryConfirmationModal() {
   const { deleteCategoryConfirmationModal } = useSelector(
     (state) => state.modalsSlice,
   );
-  const { currentID } = useSelector((state) => state.currentActionIDSlice);
 
   const { t } = useTranslation();
 
@@ -22,6 +21,7 @@ export default function MPDeleteCategoryConfirmationModal() {
   }
 
   function handleDelete() {
+    const currentID = localStorage.getItem("currentActionID");
     dispatch(deleteCategory(currentID));
     dispatch(stateDeleteCategory(currentID));
     handleModal();
