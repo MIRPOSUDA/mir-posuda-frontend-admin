@@ -23,6 +23,7 @@ import { TbArrowsSort } from "react-icons/tb";
 export default function MPCategoryTable({ categories, loading }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  console.log(categories);
 
   function handleEdit(id) {
     localStorage.setItem("currentActionID", id);

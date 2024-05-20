@@ -51,7 +51,7 @@ export const authLogout = createAsyncThunk(
       });
       switch (req.status) {
         case 200:
-          return await req.json();
+          return req;
         default:
           req;
       }

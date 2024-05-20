@@ -11,7 +11,7 @@ function MPUpdateCategoryModal() {
   const submitter = useRef(null);
   const dispatch = useDispatch();
   const { updateCategoryModal } = useSelector((state) => state.modalsSlice);
-  const { currentID } = useSelector((state) => state.currentActionIDSlice);
+  const currentID = localStorage.getItem("currentActionID");
 
   function handleModal() {
     dispatch(modalManager("updateCategoryModal"));

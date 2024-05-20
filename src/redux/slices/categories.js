@@ -16,7 +16,7 @@ export const getCategory = createAsyncThunk(
   "getCategory/categories",
   async (_, thunkAPI) => {
     try {
-      const language = localStorage.getItem("language") || "cr";
+      const language = localStorage.getItem("language")?.code || "cr";
       const req = await fetch(baseUrl + `/category/get-all/${language}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
